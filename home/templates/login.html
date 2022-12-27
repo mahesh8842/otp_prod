@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block content %}
+
+
+
+<div class="container mt-5 pt-4">
+    
+    <div class="col-6 mx-auto">
+        <h3 class="text-center">Login</h3>
+        <form method="post">
+            {% csrf_token %}
+            {% if message %}
+            <div class="alert alert-{{class}}">
+                {{message}}
+            </div>
+            {% endif %}
+            <div class="row">
+                <div class="form-group col-12">
+                    <input type="text" placeholder="Mobile" class="form-control border-{{class}}" value="{{mobile}}" name="mobile" id="">
+                </div>
+            </div>
+            {% if display %}
+            <div class="row">
+                <div class="form-group col-12">
+                    <input type="text" placeholder="otp" class="form-control" name="otp" id="">
+                </div>
+            </div>
+            {% endif %}
+
+            <p>Don't have account <a href="{% url 'register' %}">Register</a></p>
+            <button class="btn btn-primary" type="submit">Submit</button>
+        </form>
+    </div>
+
+</div>
+
+
+{% endblock %}
